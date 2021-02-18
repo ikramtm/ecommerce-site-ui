@@ -1,5 +1,12 @@
 $color-primary: #8767f0;
 
+.hero {
+  width: 100%;
+  &__img {
+    height: 300px;
+  }
+}
+
 .nav {
   padding: 1rem 0;
   width: 100%;
