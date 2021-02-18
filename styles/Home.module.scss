@@ -1,4 +1,45 @@
-$color-primary: blueviolet;
+$color-primary: #8767f0;
+
+.nav {
+  padding: 1rem 0;
+  width: 100%;
+  &__top {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
+  }
+  &__mid {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+  }
+  &__btm {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0;
+  }
+  &__link {
+    margin-left: 1rem;
+  }
+  &__logo {
+    color: $color-primary;
+    font-size: 1.75rem;
+  }
+  &__input {
+    margin-left: 1rem;
+    flex-grow: 3;
+  }
+  &__btn {
+    background-color: $color-primary;
+    margin-left: 1rem;
+    color: white;
+    border-radius: 0.25rem;
+    width: 5rem;
+    border: none;
+  }
+}
 
 .container {
   min-height: 100vh;
@@ -16,6 +57,10 @@ $color-primary: blueviolet;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.top_nav {
+  display: flex;
 }
 
 .footer {
