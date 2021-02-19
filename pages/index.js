@@ -20,7 +20,7 @@ const Home = ({ flashSale }) => {
       <main className={styles.main}>
         <div className={styles.salesContainer}>
         { flashSale.map((product) => {
-          return <ProductCard {...product} />
+          return <ProductCard key={product.name} {...product} />
         })}
         </div>
       </main>
