@@ -49,8 +49,35 @@ const mockProducts = [
   }
 ]
 
+const saleVouchers = [
+  {
+    title: 'Monday Happy',
+    code: 'MONHPY',
+    discount: '20'
+  },
+  {
+    title: 'Payday Surprise',
+    code: 'SRPSPYDY',
+    discount: '20'
+  },
+  {
+    title: 'First Order',
+    code: 'HPYFRST',
+    discount: '20'
+  },
+  {
+    title: 'Vegeterian Food',
+    code: 'VEGANLOVE',
+    discount: '20'
+  }
+]
+
 export const getInventory = () => {
   return {
     flashSale: mockProducts
   }
+}
+
+export const getSalesVouchers = () => {
+  return { vouchers: saleVouchers }
 }

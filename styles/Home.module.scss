@@ -1,8 +1,42 @@
 $color-primary: #8767f0;
+$color-hashtag: #e8a18b;
 
-.salesContainer {
+.voucher {
   display: flex;
   justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  width: 238px;
+  &:first-child {
+    margin-left: 0;
+  }
+  &__container {
+    &--left {
+      padding: 0 0.5rem;
+    }
+    &--right {
+      flex-grow: 0.5;
+      text-align: center;
+      padding: 0 0.5rem;
+      color: white;
+      background-color: $color-primary;
+    }
+  }
+  &__label {
+    &--hashtag {
+      color: $color-hashtag;
+    }
+    &--bold {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  }
+}
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
 }
 
 .productCard {
@@ -10,8 +44,8 @@ $color-primary: #8767f0;
   position: relative;
   width: 15rem;
   // margin: 0 0 0 1rem;
-  margin-left: 1rem;
   border: 1px solid black;
+  margin-left: 1rem;
   &:first-child {
     margin-left: 0;
   }
