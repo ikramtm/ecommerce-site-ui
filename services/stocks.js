@@ -1,6 +1,8 @@
 const mockProducts = [
   {
     name: 'Hoodie',
+    sku: '432432',
+    brand: 'Nike',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',
@@ -13,6 +15,8 @@ const mockProducts = [
   },
   {
     name: 'Kurta',
+    sku: '432432',
+    brand: 'Nike',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',
@@ -25,6 +29,8 @@ const mockProducts = [
   },
   {
     name: 'Jacket',
+    sku: '432432',
+    brand: 'Nike',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',
@@ -37,6 +43,8 @@ const mockProducts = [
   },
   {
     name: 'Dress',
+    sku: '432432',
+    brand: 'Nike',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',

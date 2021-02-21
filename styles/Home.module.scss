@@ -1,6 +1,17 @@
 $color-primary: #8767f0;
 $color-hashtag: #e8a18b;
 
+.modalProduct {
+  max-width: 1200rem;
+  display: flex;
+  &__carousel {
+    width: 40%;
+  }
+  &__info {
+    padding: 0 2rem;
+  }
+}
+
 .voucher {
   display: flex;
   justify-content: space-between;

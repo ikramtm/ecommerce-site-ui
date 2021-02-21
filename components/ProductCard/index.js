@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { Carousel } from 'react-responsive-carousel'
+import { useState } from 'react'
 import Modal from 'react-modal'
 import styles from '../../styles/Home.module.scss'
 
@@ -15,7 +16,9 @@ const customStyles = {
 
 const ProductCard = ({
   name,
+  sku,
   price,
+  brand,
   discount,
   sizes = [],
   img = {},
@@ -25,6 +28,7 @@ const ProductCard = ({
   const [selectedColor, setColor] = useState(colors[0])
   const [selectedSize, setSize] = useState(sizes[0])
   const [modalOpen, setModalOpen] = useState(false)
+  const [quantity, setQuantity] = useState(1)
 
   const closeModal = (e) => {
     console.log(e)
@@ -76,8 +80,53 @@ const ProductCard = ({
           style={customStyles}
           contentLabel="Example Modal"
       >
-        <h2>Hello</h2>
-          <button onClick={closeModal}>close</button>
+        <div className={styles.modalProduct}>
+          <div className={styles.modalProduct__carousel}>
+              <Carousel showThumbs={false} infiniteLoop={true}>
+                <div className={styles.productCard__img}>
+                  <img className={styles.productCard__img} src={img.src} alt={img.label} />
+                </div>
+                <div>
+                  <img className={styles.productCard__img} src={img.src} alt={img.label} />
+                </div>
+                <div>
+                  <img className={styles.productCard__img} src={img.src} alt={img.label} />
+                </div>
+              </Carousel>
+            <img className={styles.productCard__img} src={img.src} alt={img.label} />
+          </div>
+          <div className={styles.modalProduct__info}>
+            {discount > 0 && <span>{discount}%</span>}
+            <span>{rating}</span>
+            <p>SKU: {sku}</p>
+            <p>Brand: {brand}</p>
+            <p>${price}</p>
+            <p>Colors: {selectedColor}</p>
+            <div>
+              {colors.map((color) => {
+                return <button key={color} onClick={() => setColor(color)}>{color}</button>
+              })}
+            </div>
+            <p>Size</p>
+            <div>
+              {sizes.map((size) => {
+                return <button key={size} onClick={() => setSize(color)}>{size}</button>
+              })}
+            </div>
+            <a href="/size-guide" target="_blank">Size Guide</a>
+            <p>Quantity</p>
+            <div className={styles.modalProduct}>
+              <span>{quantity}</span>
+              <button>+</button>
+              <button>-</button>
+            </div>
+            <div className={styles.modalProduct}>
+              <button>Love</button>
+              <button>Add to Cart</button>
+              <button>Buy</button>
+            </div>
+          </div>
+        </div>
       </Modal>
     </div>
   )
