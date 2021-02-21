@@ -100,6 +100,38 @@ $color-hashtag: #e8a18b;
   &__img {
     height: 300px;
   }
+  &__ctrl {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__dots {
+    margin-right: 2rem;
+  }
+  &__dot--inactive {
+    background: black;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 8px;
+  }
+  &__dot--active {
+    background: grey;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 8px;
+  }
+  &__ctrlBtn {
+    background: none;
+    border: none;
+    width: 2.5rem;
+  }
 }
 
 .nav {
