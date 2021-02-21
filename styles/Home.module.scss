@@ -103,14 +103,18 @@ $color-hashtag: #e8a18b;
 }
 
 .nav {
-  padding: 1rem 0;
   width: 100%;
+  &__dropdown {
+    margin-left: 1rem;
+    border: none;
+  }
   &__top {
+    padding: 1rem 5rem;
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 1rem;
   }
   &__mid {
+    padding: 1rem 5rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -118,20 +122,42 @@ $color-hashtag: #e8a18b;
     border-bottom: 1px solid grey;
   }
   &__btm {
+    padding: 1rem 5rem;
     display: flex;
     justify-content: flex-start;
-    padding: 1rem 0;
+  }
+  &__btnContainer {
+    margin-left: 3rem;
   }
   &__link {
-    margin-left: 1rem;
+    margin-left: 3rem;
+    &:first-child {
+      margin-left: 0;
+    }
+    &--icon {
+      margin-left: 3rem;
+      width: 20px;
+      height: 20px;
+      img {
+        width: 100%;
+      }
+    }
   }
   &__logo {
     color: $color-primary;
+    margin: 0;
     font-size: 1.75rem;
   }
   &__input {
+    height: 1.75rem;
+    font-size: 1.5rem;
+    border: none;
+    background: url('/magnifying-glass.svg') left / contain no-repeat;
     margin-left: 1rem;
     flex-grow: 3;
+    &:focus {
+      background: none;
+    }
   }
   &__btn {
     background-color: $color-primary;
@@ -140,6 +166,33 @@ $color-hashtag: #e8a18b;
     border-radius: 0.25rem;
     width: 5rem;
     border: none;
+  }
+}
+
+.button {
+  &__img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.2rem;
+  }
+  &--primary {
+    height: 2.75rem;
+    padding: 1rem;
+    background-color: $color-primary;
+    color: white;
+    border-radius: 0.25rem;
+    min-width: 5rem;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+  &--secondary {
+    background-color: white;
+    margin-left: 1rem;
+    color: $color-primary;
+    border-radius: 0.25rem;
+    width: 5rem;
+    border: 1px solid $color-primary;
   }
 }
 
@@ -249,7 +302,7 @@ $color-hashtag: #e8a18b;
 }
 
 .card h3 {
-  margin: 0 0 1rem 0;
+  // margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
 

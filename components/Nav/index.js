@@ -1,3 +1,4 @@
+import Button from '../Button/index'
 import styles from '../../styles/Home.module.scss'
 
 const topNavLink = [
@@ -12,10 +13,6 @@ const topNavLink = [
   {
     label: 'About',
     link: '/about'
-  },
-  {
-    label: 'ENG',
-    link: '/eng'
   }
 ]
 
@@ -30,12 +27,12 @@ const midNavItems = [
   },
   {
     label: 'Fav',
-    icon: 'sd',
+    icon: '/heart.svg',
     link: '/favourites'
   },
   {
     label: 'Profile',
-    icon: 'sdsa',
+    icon: '/user.svg',
     link: '/profile'
   }
 ]
@@ -91,17 +88,29 @@ const Nav = () => {
         {topNavLink.map(link => {
           return <a key={link.label} className={styles.nav__link} href={link.link}>{link.label}</a>
         })}
+        <select className={styles.nav__dropdown}>
+          <option>ENG</option>
+          <option>MALAY</option>
+        </select>
       </div>
 
       <div className={styles.nav__mid}>
         <h3 className={styles.nav__logo}>Blizoo.</h3>
         <input className={styles.nav__input} type="text"/>
         {midNavItems.map(link => {
-          return <a key={link.label} className={styles.nav__link} href={link.link}>{link.label}</a>
+          return (
+            <a
+              key={link.label}
+              className={styles[`${!link.icon ? 'nav__link' : 'nav__link--icon'}`]}
+              href={link.link}
+            >
+              {!link.icon ? link.label : <img src={link.icon} alt={link.label} />}
+            </a>
+          )
         })}
-        <button className={styles.nav__btn}>
-          Cart (0)
-        </button>
+        <div className={styles.nav__btnContainer}>
+          <Button title='Cart (0)' variant='primary' icon='/bag.svg' />
+        </div>
       </div>
 
       <div className={styles.nav__btm}>
