@@ -1,5 +1,7 @@
 $color-primary: #8767f0;
-$color-hashtag: #e8a18b;
+$color-hashtag: #e65a3e;
+$color-greyraven: #71757b;
+$color-greybackground: #f7f8fa;
 
 .modalProduct {
   max-width: 1200rem;
@@ -8,7 +10,161 @@ $color-hashtag: #e8a18b;
     width: 40%;
   }
   &__info {
+    flex-grow: 2;
     padding: 0 2rem;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    padding: none;
+    margin-bottom: 0.5rem;
+  }
+  &__containerBtn {
+    display: flex;
+    align-items: center;
+    padding: none;
+    margin-top: 1rem;
+  }
+  &__container--price {
+    display: flex;
+    align-items: flex-end;
+    margin: 1.5rem 0;
+  }
+  &__label {
+    margin: 0;
+    color: $color-greyraven;
+  }
+  &__value {
+    margin: 0;
+    margin-left: 0.5rem;
+    color: black;
+  }
+  &__price--final {
+    margin: 0;
+    font-size: 1.75rem;
+    color: $color-hashtag;
+  }
+  &__price--initial {
+    margin: 0;
+    margin-left: 0.5rem;
+    text-decoration: line-through;
+    color: $color-greyraven;
+    font-size: 1rem;
+  }
+  &__selectorBorder {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-active {
+      border: none;
+    }
+  }
+  &__selectorColor {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: red;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__selectorSize {
+    width: 30px;
+    height: 30px;
+    margin-right: 0.5rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+    &-active {
+      border: 1px solid $color-primary;
+      color: $color-primary;
+    }
+  }
+  &__qty {
+    width: 10rem;
+    height: 2rem;
+    margin-right: 1rem;
+    padding: 0.4rem;
+    background: $color-greybackground;
+    border-radius: 0.2rem;
+    border: 1px solid $color-greybackground;
+  }
+  &__qtyBtn {
+    border-radius: 0.4rem;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid $color-greyraven;
+    color: $color-greyraven;
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    background: none;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  h3 {
+    margin: 0.5rem 0;
+  }
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border: none;
+    box-shadow: 11px 11px 17px -2px rgba(0, 0, 0, 0.24);
+    border-radius: 50%;
+    margin-right: 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.red {
+  background: red;
+}
+
+.blue {
+  background: blue;
+}
+
+.black {
+  background: black;
+}
+
+.discount {
+  background: red;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  min-width: 3rem;
+}
+
+.rating {
+  margin-left: 2rem;
+  display: flex;
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.3rem;
+  }
+  &__label {
+    color: $color-greyraven;
   }
 }
 
@@ -207,6 +363,7 @@ $color-hashtag: #e8a18b;
     height: 20px;
     margin-right: 0.2rem;
   }
+
   &--primary {
     height: 2.75rem;
     padding: 1rem;
@@ -219,12 +376,16 @@ $color-hashtag: #e8a18b;
     align-items: center;
   }
   &--secondary {
+    height: 2.75rem;
+    padding: 1rem;
     background-color: white;
-    margin-left: 1rem;
     color: $color-primary;
     border-radius: 0.25rem;
-    width: 5rem;
+    min-width: 5rem;
+    margin-right: 1rem;
     border: 1px solid $color-primary;
+    display: flex;
+    align-items: center;
   }
 }
 

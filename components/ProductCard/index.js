@@ -1,6 +1,8 @@
 import { Carousel } from 'react-responsive-carousel'
 import { useState } from 'react'
 import Modal from 'react-modal'
+
+import Button from '../Button/index'
 import styles from '../../styles/Home.module.scss'
 
 const customStyles = {
@@ -29,16 +31,19 @@ const ProductCard = ({
   const [selectedSize, setSize] = useState(sizes[0])
   const [modalOpen, setModalOpen] = useState(false)
   const [quantity, setQuantity] = useState(1)
+  const [liked, setLike] = useState(false)
 
   const closeModal = (e) => {
-    console.log(e)
     e.stopPropagation();
     setModalOpen(false)
   }
 
 
-  let subtitle
-
+  const decreaseQty = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
   const openModal = (e) => {
     setModalOpen(true)
   }
@@ -82,7 +87,7 @@ const ProductCard = ({
       >
         <div className={styles.modalProduct}>
           <div className={styles.modalProduct__carousel}>
-              <Carousel showThumbs={false} infiniteLoop={true}>
+              {/* <Carousel showThumbs={false} infiniteLoop={true}>
                 <div className={styles.productCard__img}>
                   <img className={styles.productCard__img} src={img.src} alt={img.label} />
                 </div>
@@ -92,38 +97,78 @@ const ProductCard = ({
                 <div>
                   <img className={styles.productCard__img} src={img.src} alt={img.label} />
                 </div>
-              </Carousel>
+              </Carousel> */}
             <img className={styles.productCard__img} src={img.src} alt={img.label} />
           </div>
           <div className={styles.modalProduct__info}>
-            {discount > 0 && <span>{discount}%</span>}
-            <span>{rating}</span>
-            <p>SKU: {sku}</p>
-            <p>Brand: {brand}</p>
-            <p>${price}</p>
-            <p>Colors: {selectedColor}</p>
-            <div>
+            <div className={styles['modalProduct__container']}>
+              {discount > 0 && <span className={styles.discount}>-{discount}%</span>}
+              <div className={styles.rating}>
+                <img className={styles.rating__icon} src='/star.svg' alt='' />
+                <span className={styles.rating__label}>{rating}</span>
+              </div>
+            </div>
+            <h3>{name}</h3>
+            <span className={styles.modalProduct__container}>
+              <p className={styles.modalProduct__label}>SKU:</p>
+              <p className={styles.modalProduct__value}>{sku}</p>
+            </span>
+            <span className={styles.modalProduct__container}>
+              <p className={styles.modalProduct__label}>Brand:</p>
+              <p className={styles.modalProduct__value}>{brand}</p>
+            </span>
+            <span className={styles['modalProduct__container--price']}>
+              <p className={styles['modalProduct__price--final']}>${price.toFixed(2)}</p>
+              <p className={styles['modalProduct__price--initial']}>${price.toFixed(2)}</p>
+            </span>
+            <span className={styles.modalProduct__container}>
+              <p className={styles.modalProduct__label}>Colors:</p>
+              <p className={styles.modalProduct__value}>{selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}</p>
+            </span>
+            <div className={styles.modalProduct__container}>
               {colors.map((color) => {
-                return <button key={color} onClick={() => setColor(color)}>{color}</button>
+                return (
+                  <div
+                    key={color}
+                    className={`${styles.modalProduct__selectorBorder} ${selectedColor !== color ? styles['modalProduct__selectorBorder-active'] : ''}`}
+                  >
+                    <div
+                      className={`${styles.modalProduct__selectorColor} ${styles[color]}`}
+                      onClick={() => setColor(color)}
+                    />
+                  </div>
+                )
               })}
             </div>
             <p>Size</p>
-            <div>
+            <div className={styles.modalProduct__container}>
               {sizes.map((size) => {
-                return <button key={size} onClick={() => setSize(color)}>{size}</button>
+                return (
+                  <div
+                    key={size}
+                    className={`${styles.modalProduct__selectorSize} ${selectedSize === size ? styles['modalProduct__selectorSize-active'] : ''}`}
+                    onClick={() => setSize(size)}
+                  >
+                    {size}
+                  </div>
+                )
               })}
             </div>
             <a href="/size-guide" target="_blank">Size Guide</a>
             <p>Quantity</p>
-            <div className={styles.modalProduct}>
-              <span>{quantity}</span>
-              <button>+</button>
-              <button>-</button>
+            <div className={styles.modalProduct__container}>
+              <span className={styles.modalProduct__qty}>
+                {quantity}
+              </span>
+              <button onClick={decreaseQty} className={styles.modalProduct__qtyBtn}>-</button>
+              <button onClick={() => setQuantity(quantity + 1)} className={styles.modalProduct__qtyBtn}>+</button>
             </div>
-            <div className={styles.modalProduct}>
-              <button>Love</button>
-              <button>Add to Cart</button>
-              <button>Buy</button>
+            <div className={styles.modalProduct__containerBtn}>
+              <button className={styles.modalProduct__icon} onClick={() => setLike(!liked)} variant='icon'>
+                <img src={liked ? '/heart-red.svg' : '/heart.svg'} alt='' />
+              </button>
+              <Button title='Add to Cart' variant='secondary' />
+              <Button title='Buy Now' variant='primary' />
             </div>
           </div>
         </div>
