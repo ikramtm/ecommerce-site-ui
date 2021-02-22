@@ -16,6 +16,44 @@ const customStyles = {
   }
 }
 
+const ColorsSelector = ({ colors, setColor, selectedColor }) => {
+  return (
+    <div className={styles.modalProduct__container}>
+      {colors.map((color) => {
+        return (
+          <div
+            key={color}
+            className={`${styles.modalProduct__selectorBorder} ${selectedColor !== color ? styles['modalProduct__selectorBorder-active'] : ''}`}
+          >
+            <div
+              className={`${styles.modalProduct__selectorColor} ${styles[color]}`}
+              onClick={() => setColor(color)}
+            />
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+const SizeSelector = ({ sizes, setSize, selectedSize }) => {
+  return (
+    <div className={styles.modalProduct__container}>
+      {sizes.map((size) => {
+        return (
+          <div
+            key={size}
+            className={`${styles.modalProduct__selectorSize} ${selectedSize === size ? styles['modalProduct__selectorSize-active'] : ''}`}
+            onClick={() => setSize(size)}
+          >
+            {size}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 const ProductCard = ({
   name,
   sku,
@@ -55,28 +93,34 @@ const ProductCard = ({
 
   return (
     <div onClick={openModal} className={styles.productCard}>
-      {discount > 0 && <span className={styles.productCard__discount}>{discount}%</span>}
-      <button className={styles[`productCard__btn--fav`]}>Love</button>
+      {discount > 0 &&
+        <div className={styles.productCard__discount}>
+          <span className={styles.discount}>-{discount}%</span>
+        </div>
+      }
+      <div className={styles[`productCard__btn--fav`]}>
+        <button className={styles.modalProduct__icon} onClick={() => setLike(!liked)} variant='icon'>
+          <img src={liked ? '/heart-red.svg' : '/heart.svg'} alt='' />
+        </button>
+      </div>
       <img className={styles.productCard__img} src={img.src} alt={img.label} />
       <div className={styles['productCard__flexContainer--spcBtwn']}>
-        <p>{name}</p>
-        <p>$ {price}</p>
+        <h3>{name}</h3>
+        <span className={styles['modalProduct__container--price']}>
+          <p className={styles['modalProduct__price--final']}>${price.toFixed(2)}</p>
+          <p className={styles['modalProduct__price--initial']}>${price.toFixed(2)}</p>
+        </span>
       </div>
       <div className={styles['productCard__flexContainer--spcBtwn']}>
-        <div>
-          {colors.map((color) => {
-            return <button key={color} onClick={() => setColor(color)}>{color}</button>
-          })}
-        </div>
-        <div>
-          {sizes.map((size) => {
-            return <button key={size} onClick={() => setSize(color)}>{size}</button>
-          })}
-        </div>
+      <ColorsSelector colors={colors} setColor={setColor} selectedColor={selectedColor} />
+      <SizeSelector sizes={sizes} setSize={setSize} selectedSize={selectedSize} />
       </div>
       <div className={styles['productCard__flexContainer--spcBtwn']}>
-        <p>{rating}</p>
-        <button className={styles[`card__btn--buy`]}>BUY +</button>
+        <div className={styles.rating}>
+          <img className={styles.rating__icon} src='/star.svg' alt='' />
+          <span className={styles.rating__label}>{rating}</span>
+        </div>
+        <Button title='Buy Now' variant='primary' />
       </div>
       <Modal
           isOpen={modalOpen}
@@ -125,35 +169,9 @@ const ProductCard = ({
               <p className={styles.modalProduct__label}>Colors:</p>
               <p className={styles.modalProduct__value}>{selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1)}</p>
             </span>
-            <div className={styles.modalProduct__container}>
-              {colors.map((color) => {
-                return (
-                  <div
-                    key={color}
-                    className={`${styles.modalProduct__selectorBorder} ${selectedColor !== color ? styles['modalProduct__selectorBorder-active'] : ''}`}
-                  >
-                    <div
-                      className={`${styles.modalProduct__selectorColor} ${styles[color]}`}
-                      onClick={() => setColor(color)}
-                    />
-                  </div>
-                )
-              })}
-            </div>
+            <ColorsSelector colors={colors} setColor={setColor} selectedColor={selectedColor} />
             <p>Size</p>
-            <div className={styles.modalProduct__container}>
-              {sizes.map((size) => {
-                return (
-                  <div
-                    key={size}
-                    className={`${styles.modalProduct__selectorSize} ${selectedSize === size ? styles['modalProduct__selectorSize-active'] : ''}`}
-                    onClick={() => setSize(size)}
-                  >
-                    {size}
-                  </div>
-                )
-              })}
-            </div>
+            <SizeSelector sizes={sizes} setSize={setSize} selectedSize={selectedSize} />
             <a href="/size-guide" target="_blank">Size Guide</a>
             <p>Quantity</p>
             <div className={styles.modalProduct__container}>
