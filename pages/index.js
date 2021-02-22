@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Grid from '@material-ui/core/Grid';
 
 import Nav from '../components/Nav/index'
 import Hero from '../components/Hero/index'
@@ -19,22 +20,35 @@ const Home = ({ flashSale, vouchers }) => {
       <Nav />
       <Hero />
       <main className={styles.main}>
-        <div className={styles.flexContainer}>
+        Flash Sales
+        <Grid container spacing={5}>
           { flashSale.map((product) => {
-            return <ProductCard key={product.name} {...product} />
+            return (
+              <Grid item xs={12} md={3}>
+                <ProductCard key={product.name} {...product} />
+              </Grid>
+            )
           })}
-        </div>
-        <div className={styles.flexContainer}>
+        </Grid>
+        <Grid container spacing={2}>
           {vouchers.map((voucher) => {
-            return <Voucher key={voucher.title} {...voucher} />
+            return (
+              <Grid item xs={12} md={3}>
+                <Voucher key={voucher.title} {...voucher} />
+              </Grid>
+            )
           })}
-        </div>
+        </Grid>
         
-        <div className={styles.flexContainer}>
+        <Grid container spacing={2}>
           { flashSale.map((product) => {
-            return <ProductCard key={product.name} {...product} />
+            return (
+              <Grid item xs={12} md={3}>
+                <ProductCard key={product.name} {...product} />
+              </Grid>
+            )
           })}
-        </div>
+        </Grid>
       </main>
     </div>
   )

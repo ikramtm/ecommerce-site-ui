@@ -54,6 +54,10 @@ const SizeSelector = ({ sizes, setSize, selectedSize }) => {
   )
 }
 
+const getDiscountedPrice = (fullPrice, discount = 0) => {
+  const discountedPrice = ((100 - discount) / 100) * fullPrice
+  return discountedPrice.toFixed(2)
+}
 const ProductCard = ({
   name,
   sku,
@@ -105,11 +109,11 @@ const ProductCard = ({
       </div>
       <img className={styles.productCard__img} src={img.src} alt={img.label} />
       <div className={styles['productCard__flexContainer--spcBtwn']}>
-        <h3>{name}</h3>
-        <span className={styles['modalProduct__container--price']}>
-          <p className={styles['modalProduct__price--final']}>${price.toFixed(2)}</p>
+        <h3 className={styles.productCard__name}>{name}</h3>
+        <div className={styles['productCard__price']}>
+          <p className={styles['modalProduct__price--final']}>${getDiscountedPrice(price, discount)}</p>
           <p className={styles['modalProduct__price--initial']}>${price.toFixed(2)}</p>
-        </span>
+        </div>
       </div>
       <div className={styles['productCard__flexContainer--spcBtwn']}>
       <ColorsSelector colors={colors} setColor={setColor} selectedColor={selectedColor} />
@@ -120,7 +124,7 @@ const ProductCard = ({
           <img className={styles.rating__icon} src='/star.svg' alt='' />
           <span className={styles.rating__label}>{rating}</span>
         </div>
-        <Button title='Buy Now' variant='primary' />
+        <a href='/buy' target='_blank' className={styles.productCard__link}>BUY +</a>
       </div>
       <Modal
           isOpen={modalOpen}

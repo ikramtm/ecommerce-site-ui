@@ -157,7 +157,6 @@ $color-greybackground: #f7f8fa;
 }
 
 .rating {
-  margin-left: 2rem;
   display: flex;
   &__icon {
     width: 20px;
@@ -201,23 +200,16 @@ $color-greybackground: #f7f8fa;
     }
   }
 }
-.flexContainer {
-  display: grid;
-  grid-template-columns: 40px 50px auto 50px 40px;
-  grid-template-rows: 25% 100px auto;
-  // grid-template-columns: 100px 50px 100px;
-  // grid-template-rows: 80px auto 80px;
-  // column-gap: 10px;
-  // row-gap: 15px;
-}
 
 .productCard {
   border-radius: 0.5rem;
   position: relative;
-  width: 15rem;
-  // margin: 0 0 0 1rem;
+  width: 20rem;
   border: 1px solid black;
-  margin-left: 1rem;
+  padding-bottom: 0.5rem;
+  &__price {
+    text-align: right;
+  }
   &:first-child {
     margin-left: 0;
   }
@@ -227,10 +219,13 @@ $color-greybackground: #f7f8fa;
   &__discount {
     position: absolute;
     left: 0.5rem;
-    top: 0.5rem;
+    top: 0.8rem;
   }
   &__img {
     width: 100%;
+  }
+  &__name {
+    margin: 0;
   }
   &__btn {
     &--fav {
@@ -245,9 +240,13 @@ $color-greybackground: #f7f8fa;
   }
   &__flexContainer {
     &--spcBtwn {
+      display: flex;
       margin: 0.5rem 0.5rem;
       justify-content: space-between;
     }
+  }
+  &__link {
+    color: $color-primary;
   }
 }
 
@@ -293,7 +292,8 @@ $color-greybackground: #f7f8fa;
 .nav {
   width: 100%;
   &__dropdown {
-    margin-left: 1rem;
+    margin-left: 3rem;
+    background: $color-greybackground;
     border: none;
   }
   &__top {
@@ -393,18 +393,23 @@ $color-greybackground: #f7f8fa;
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
+  background: $color-greybackground;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .main {
-  padding: 5rem 0;
+  padding: 5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.grid {
+  margin-bottom: 2rem;
 }
 
 .top_nav {
