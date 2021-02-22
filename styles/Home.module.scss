@@ -168,13 +168,16 @@ $color-greybackground: #f7f8fa;
   }
 }
 
+.vouchers {
+  // margin: 5rem 0;
+}
 .voucher {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
   border-radius: 0.5rem;
   margin-left: 1rem;
-  width: 238px;
+  width: 20rem;
   &:first-child {
     margin-left: 0;
   }
@@ -262,30 +265,62 @@ $color-greybackground: #f7f8fa;
     align-items: center;
   }
   &__dots {
-    margin-right: 2rem;
+    margin: 0 2rem;
   }
-  &__dot--inactive {
+  &__dotBorder {
+    border-radius: 50%;
+    display: inline-block;
+    border: none;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    &-active {
+      border: 1px solid grey;
+    }
+  }
+  &__dot {
     background: black;
     border-radius: 50%;
     width: 8px;
     height: 8px;
     cursor: pointer;
-    display: inline-block;
-    margin: 0 8px;
-  }
-  &__dot--active {
-    background: grey;
-    border-radius: 50%;
-    width: 8px;
-    height: 8px;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 8px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    &-active {
+      background: grey;
+    }
   }
   &__ctrlBtn {
     background: none;
     border: none;
     width: 2.5rem;
+  }
+  &__imgContainer {
+    position: relative;
+    height: 800px;
+  }
+  &__infoContainer {
+    position: absolute;
+    bottom: 4rem;
+    right: 4rem;
+    text-align: left;
+  }
+  &__eyebrow {
+    font-size: 2rem;
+    color: white;
+  }
+  &__title {
+    font-size: 4rem;
+    color: $color-greybackground;
+  }
+  &__link {
+    font-size: 2rem;
+    color: $color-primary;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

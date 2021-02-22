@@ -90,10 +90,6 @@ const ProductCard = ({
     setModalOpen(true)
   }
 
-  // const afterOpenModal = () => {
-  //   // references are now sync'd and can be accessed.
-  //   subtitle.style.color = '#f00';
-  // }
 
   return (
     <div onClick={openModal} className={styles.productCard}>

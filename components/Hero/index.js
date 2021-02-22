@@ -47,9 +47,15 @@ const Hero = () => {
       >
         {heroImages.map((hero) => {
           return (
-            <div key={hero.title}>
+            <div key={hero.title} className={styles.hero__imgContainer}>
               <img src={hero.img} alt={hero.title} />
-              <p className="legend">{hero.title}</p>
+              <div className={styles.hero__infoContainer}>
+                <p className={styles.hero__eyebrow}>New Arrival</p>
+                <p className={styles.hero__title}>{hero.title}</p>
+                <a className={styles.hero__link} href={`/${hero.title}`} target='_blank'>
+                  Shop Now
+                </a>
+              </div>
             </div>
           )
         })}
@@ -58,20 +64,21 @@ const Hero = () => {
         <button className={styles.hero__ctrlBtn} onClick={prevSlide}>
           <img src='/left.svg' alt='right' />
         </button>
-        <ul className={styles.hero__dots}>
+        <div className={styles.hero__dots}>
           {heroImages.map((img, i) => {
             return (
-              <li
-                className={styles[`${i === currentSlide ? 'hero__dot--active': 'hero__dot--inactive'}`]}
-                onClick={() => setCurrentSlide(i)}
-                key={i}
-                value={i}
-                role="button"
-                tabIndex="0"
-              />
+              <div key={i} className={`${styles.hero__dotBorder} ${styles[`${i === currentSlide ? 'hero__dotBorder-active': ''}`]}`}>
+                <div
+                  className={`${styles.hero__dot} ${styles[`${i === currentSlide ? 'hero__dot-active': ''}`]}`}
+                  onClick={() => setCurrentSlide(i)}
+                  value={i}
+                  role="button"
+                  tabIndex="0"
+                />
+              </div>
             )
           })}
-        </ul>
+        </div>
         <button className={styles.hero__ctrlBtn} onClick={nextSlide}>
           <img src='/right.svg' alt='right' />
         </button>

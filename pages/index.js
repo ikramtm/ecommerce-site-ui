@@ -30,15 +30,17 @@ const Home = ({ flashSale, vouchers }) => {
             )
           })}
         </Grid>
-        <Grid container spacing={2}>
-          {vouchers.map((voucher) => {
-            return (
-              <Grid item xs={12} md={3}>
-                <Voucher key={voucher.title} {...voucher} />
-              </Grid>
-            )
-          })}
-        </Grid>
+        <div className={styles.vouchers}>
+          <Grid container spacing={2}>
+            {vouchers.map((voucher) => {
+              return (
+                <Grid item xs={12} md={3}>
+                  <Voucher key={voucher.title} {...voucher} />
+                </Grid>
+              )
+            })}
+          </Grid>
+        </div>
         
         <Grid container spacing={2}>
           { flashSale.map((product) => {
