@@ -171,6 +171,7 @@ $color-greybackground: #f7f8fa;
 .vouchers {
   // margin: 5rem 0;
 }
+
 .voucher {
   display: flex;
   justify-content: space-between;
@@ -324,6 +325,38 @@ $color-greybackground: #f7f8fa;
   }
 }
 
+.flashSales {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+  &__title {
+    font-size: 1.25rem;
+    margin: 0 0.5rem;
+  }
+}
+
+.timer {
+  display: flex;
+  &__display {
+    background: $color-primary;
+    padding-top: 7px;
+    text-align: center;
+    color: white;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 0.2rem;
+    margin-right: 0.2rem;
+    p {
+      margin: 0;
+    }
+  }
+}
+
 .nav {
   width: 100%;
   &__dropdown {
@@ -443,8 +476,9 @@ $color-greybackground: #f7f8fa;
   align-items: center;
 }
 
-.grid {
+.gridz {
   margin-bottom: 2rem;
+  display: flex;
 }
 
 .top_nav {
