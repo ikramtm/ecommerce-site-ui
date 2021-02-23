@@ -74,6 +74,22 @@ const ProductCard = ({
   const [modalOpen, setModalOpen] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const [liked, setLike] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const nextSlide = () => {
+    if (currentSlide < 2) {
+      setCurrentSlide(currentSlide + 1)
+    } else {
+      setCurrentSlide(0)
+    }
+  }
+  const prevSlide = () => {
+    if (currentSlide > -1) {
+      setCurrentSlide(currentSlide - 1)
+    } else {
+      setCurrentSlide(2)
+    }
+  }
 
   const closeModal = (e) => {
     e.stopPropagation();
@@ -131,18 +147,27 @@ const ProductCard = ({
       >
         <div className={styles.modalProduct}>
           <div className={styles.modalProduct__carousel}>
-              {/* <Carousel showThumbs={false} infiniteLoop={true}>
-                <div className={styles.productCard__img}>
-                  <img className={styles.productCard__img} src={img.src} alt={img.label} />
-                </div>
-                <div>
-                  <img className={styles.productCard__img} src={img.src} alt={img.label} />
-                </div>
-                <div>
-                  <img className={styles.productCard__img} src={img.src} alt={img.label} />
-                </div>
-              </Carousel> */}
-            <img className={styles.productCard__img} src={img.src} alt={img.label} />
+              <ul className={styles.modalProduct__thumbnailContainer}>
+                {colors.map((colors, i) => {
+                  return (
+                    <li
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      className={`${styles.modalProduct__thumbnail} ${styles[currentSlide === i ? 'modalProduct__thumbnail-active' : '']}`}>
+                      <img className={styles.modalProduct__thumbnailImg} src={img.src} alt={img.label} />
+                    </li>
+                  )
+                })}
+              </ul>
+              <Carousel showThumbs={false} selectedItem={currentSlide} infiniteLoop={true}>
+                {colors.map((colors) => {
+                  return (
+                    <div className={styles.modalProduct__imgContainer}>
+                      <img className={styles.modalProduct__img} src={img.src} alt={img.label} />
+                    </div>
+                  )
+                })}
+              </Carousel>
           </div>
           <div className={styles.modalProduct__info}>
             <div className={styles['modalProduct__container']}>
