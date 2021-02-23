@@ -169,16 +169,15 @@ $color-greybackground: #f7f8fa;
 }
 
 .vouchers {
-  // margin: 5rem 0;
+  margin: 6rem 0;
 }
-
 .voucher {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  box-shadow: 4px 12px 29px -16px rgba(0, 0, 0, 0.75);
   border-radius: 0.5rem;
-  margin-left: 1rem;
-  width: 20rem;
+  margin-left: 5rem;
+  width: 21.375rem;
   &:first-child {
     margin-left: 0;
   }
@@ -191,6 +190,8 @@ $color-greybackground: #f7f8fa;
       text-align: center;
       padding: 0 0.5rem;
       color: white;
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
       background-color: $color-primary;
     }
   }
@@ -208,8 +209,9 @@ $color-greybackground: #f7f8fa;
 .productCard {
   border-radius: 0.5rem;
   position: relative;
-  width: 20rem;
-  border: 1px solid black;
+  width: 21.375rem;
+  margin-left: 5rem;
+  box-shadow: 4px 12px 29px -16px rgba(0, 0, 0, 0.75);
   padding-bottom: 0.5rem;
   &__price {
     text-align: right;
@@ -226,6 +228,7 @@ $color-greybackground: #f7f8fa;
     top: 0.8rem;
   }
   &__img {
+    border-radius: 0.5rem;
     width: 100%;
   }
   &__name {
@@ -468,9 +471,9 @@ $color-greybackground: #f7f8fa;
 }
 
 .main {
-  padding: 5rem;
   flex: 1;
   display: flex;
+  margin: 0 5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -479,6 +482,10 @@ $color-greybackground: #f7f8fa;
 .gridz {
   margin-bottom: 2rem;
   display: flex;
+  &-vouchers {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+  }
 }
 
 .top_nav {

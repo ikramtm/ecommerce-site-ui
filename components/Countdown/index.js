@@ -17,9 +17,7 @@ const TimerCountdown = ({ time }) => {
   return (
     <Countdown
       date={Date.now() + (time)}
-      zeroPadTime={2}
       renderer={renderer}
-      precision={2}
     />
   )
 }

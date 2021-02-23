@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Grid from '@material-ui/core/Grid';
 
 import Nav from '../components/Nav/index'
 import Hero from '../components/Hero/index'
@@ -29,33 +28,24 @@ const Home = ({ flashSale, vouchers }) => {
         <div className={styles.gridz}>
           { flashSale.map((product) => {
             return (
-              // <Grid item xs={12} md={3}>
               <ProductCard key={product.name} {...product} />
-              // </Grid>
             )
           })}
         </div>
-        <div className={styles.vouchers}>
-          <Grid container spacing={2}>
+        <div className={`${styles['gridz-vouchers']} ${styles.gridz}`}>
             {vouchers.map((voucher) => {
               return (
-                <Grid item xs={12} md={3}>
-                  <Voucher key={voucher.title} {...voucher} />
-                </Grid>
+                <Voucher key={voucher.title} {...voucher} />
               )
             })}
-          </Grid>
-        </div>
-        
-        <Grid container spacing={2}>
+        </div>        
+        <div className={styles.gridz}>
           { flashSale.map((product) => {
             return (
-              <Grid item xs={12} md={3}>
-                <ProductCard key={product.name} {...product} />
-              </Grid>
+              <ProductCard key={product.name} {...product} />
             )
           })}
-        </Grid>
+        </div>
       </main>
     </div>
   )
