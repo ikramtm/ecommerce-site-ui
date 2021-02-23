@@ -54,6 +54,17 @@ const SizeSelector = ({ sizes, setSize, selectedSize }) => {
   )
 }
 
+const arrowStyles = {
+  position: 'absolute',
+  zIndex: 2,
+  top: 'calc(50% - 15px)',
+  width: 40,
+  height: 40,
+  borderRadius: '50%',
+  boxShadow: '11px 11px 17px -2px rgba(0, 0, 0, 0.24)',
+  cursor: 'pointer',
+};
+
 const getDiscountedPrice = (fullPrice, discount = 0) => {
   const discountedPrice = ((100 - discount) / 100) * fullPrice
   return discountedPrice.toFixed(2)
@@ -75,21 +86,6 @@ const ProductCard = ({
   const [quantity, setQuantity] = useState(1)
   const [liked, setLike] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
-
-  const nextSlide = () => {
-    if (currentSlide < 2) {
-      setCurrentSlide(currentSlide + 1)
-    } else {
-      setCurrentSlide(0)
-    }
-  }
-  const prevSlide = () => {
-    if (currentSlide > -1) {
-      setCurrentSlide(currentSlide - 1)
-    } else {
-      setCurrentSlide(2)
-    }
-  }
 
   const closeModal = (e) => {
     e.stopPropagation();
@@ -138,9 +134,9 @@ const ProductCard = ({
         </div>
         <a href='/buy' target='_blank' className={styles.productCard__link}>BUY +</a>
       </div>
+      {/* TODO: refactor this into its own component, but in interest of time, leave it as is */}
       <Modal
           isOpen={modalOpen}
-          // onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Example Modal"
@@ -159,7 +155,25 @@ const ProductCard = ({
                   )
                 })}
               </ul>
-              <Carousel showThumbs={false} selectedItem={currentSlide} infiniteLoop={true}>
+              <Carousel
+                showThumbs={false}
+                selectedItem={currentSlide}
+                infiniteLoop={true}
+                renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                  hasPrev && (
+                    <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, left: 15 }}>
+                      {'<'}
+                    </button>
+                )
+              }
+                renderArrowNext={(onClickHandler, hasNext, label) =>
+                  hasNext && (
+                    <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, right: 15 }}>
+                      {'>'}
+                    </button>
+                  )
+              }
+              >
                 {colors.map((colors) => {
                   return (
                     <div className={styles.modalProduct__imgContainer}>
@@ -172,7 +186,7 @@ const ProductCard = ({
           <div className={styles.modalProduct__info}>
             <div className={styles['modalProduct__container']}>
               {discount > 0 && <span className={styles.discount}>-{discount}%</span>}
-              <div className={styles.rating}>
+              <div className={`${styles.rating} ${styles.rating__modal}`}>
                 <img className={styles.rating__icon} src='/star.svg' alt='' />
                 <span className={styles.rating__label}>{rating}</span>
               </div>

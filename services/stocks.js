@@ -57,6 +57,65 @@ const mockProducts = [
   }
 ]
 
+const bestSeller = [
+  {
+    name: 'Kurta',
+    sku: '00116c-23',
+    brand: 'Al-Halal',
+    sizes: ['S', 'M', 'L'],
+    colors: ['red', 'blue', 'black'],
+    rating: '4.9',
+    discount: 40,
+    img: {
+      src: 'https://images.unsplash.com/photo-1607095932579-2008e60334ab?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OTZ8fDMlM0E0JTIwY2xvdGhlc3xlbnwwfDF8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+      alt: 'hoodie'
+    },
+    price: 50.00
+  },
+  {
+    name: 'Jacket',
+    sku: '00215b-11',
+    brand: 'Timberland',
+    sizes: ['S', 'M', 'L'],
+    colors: ['red', 'blue', 'black'],
+    rating: '4.8',
+    discount: 35,
+    img: {
+      src: 'https://images.unsplash.com/photo-1610802518553-d5e1093ada22?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTAxfHwzJTNBNCUyMGNsb3RoZXN8ZW58MHwxfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      alt: 'hoodie'
+    },
+    price: 200.00
+  },
+  {
+    name: 'LA Cap',
+    sku: '00211a-89',
+    brand: 'Nike',
+    sizes: ['S', 'M', 'L'],
+    colors: ['red', 'blue', 'black'],
+    rating: '4.7',
+    discount: 50,
+    img: {
+      src: 'https://images.unsplash.com/photo-1598434901316-ad271e8b29af?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTA5fHwzJTNBNCUyMGNsb3RoZXN8ZW58MHwxfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      alt: 'cap'
+    },
+    price: 300.00
+  },
+  {
+    name: 'Denim Jacket',
+    sku: '00211a-89',
+    brand: 'Gucci',
+    sizes: ['S', 'M', 'L'],
+    colors: ['red', 'blue', 'black'],
+    rating: '4.9',
+    discount: 50,
+    img: {
+      src: 'https://images.unsplash.com/photo-1605557834021-6d58b8f73e66?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTU1fHwzJTNBNCUyMGNsb3RoZXN8ZW58MHwxfDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+      alt: 'coat'
+    },
+    price: 1000.00
+  }
+]
+
 const saleVouchers = [
   {
     title: 'Monday Happy',
@@ -82,7 +141,9 @@ const saleVouchers = [
 
 export const getInventory = () => {
   return {
-    flashSale: mockProducts
+    flashSale: mockProducts,
+    bestSeller,
+    allProducts: mockProducts
   }
 }
 
