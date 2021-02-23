@@ -13,17 +13,22 @@ const Home = ({ flashSale, vouchers }) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Ikram's Assignment</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Nav />
       <Hero />
       <main className={styles.main}>
+        <div className={styles.circle}>
+          <div className={styles.circle__outer}>
+            <div className={styles.circle__inner} />
+          </div>
+        </div>
         <div className={styles.flashSales}>
           <img className={styles.flashSales__icon} src='/flash.svg' alt='' />
           <p className={styles.flashSales__title}>Flash Sales</p>
-          <TimerCountdown time={20000}/>
+          <TimerCountdown time={43200000}/>
         </div>
         <div className={styles.gridz}>
           { flashSale.map((product) => {

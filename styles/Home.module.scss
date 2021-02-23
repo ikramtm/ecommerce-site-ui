@@ -173,6 +173,7 @@ $color-greybackground: #f7f8fa;
 }
 .voucher {
   display: flex;
+  z-index: 1;
   justify-content: space-between;
   box-shadow: 4px 12px 29px -16px rgba(0, 0, 0, 0.75);
   border-radius: 0.5rem;
@@ -184,8 +185,14 @@ $color-greybackground: #f7f8fa;
   &__container {
     &--left {
       padding: 0 0.5rem;
+      width: 60%;
+      text-align: center;
+      background: $color-greybackground;
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
     }
     &--right {
+      width: 40%;
       flex-grow: 0.5;
       text-align: center;
       padding: 0 0.5rem;
@@ -208,9 +215,11 @@ $color-greybackground: #f7f8fa;
 
 .productCard {
   border-radius: 0.5rem;
+  // z-index: 2;
   position: relative;
   width: 21.375rem;
   margin-left: 5rem;
+  background: $color-greybackground;
   box-shadow: 4px 12px 29px -16px rgba(0, 0, 0, 0.75);
   padding-bottom: 0.5rem;
   &__price {
@@ -473,6 +482,7 @@ $color-greybackground: #f7f8fa;
 .main {
   flex: 1;
   display: flex;
+  position: relative;
   margin: 0 5rem;
   flex-direction: column;
   justify-content: center;
@@ -485,6 +495,32 @@ $color-greybackground: #f7f8fa;
   &-vouchers {
     margin-top: 4rem;
     margin-bottom: 6rem;
+  }
+}
+
+.circle {
+  position: absolute;
+  // z-index: 1;
+  top: 10rem;
+  left: -20rem;
+  height: 50rem;
+  width: 50rem;
+  background: transparent;
+  &__outer {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: $color-greyraven;
+    opacity: 0.5;
+  }
+  &__inner {
+    position: absolute;
+    right: 20%;
+    bottom: 20%;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    background: $color-greybackground;
   }
 }
 
