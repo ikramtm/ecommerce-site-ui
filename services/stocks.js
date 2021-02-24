@@ -1,7 +1,7 @@
 const mockProducts = [
   {
-    name: 'Hoodie',
-    sku: '432432',
+    name: 'Men\'s T-shirt',
+    sku: '001299a-11c',
     brand: 'Nike',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
@@ -14,8 +14,8 @@ const mockProducts = [
     price: 10.00
   },
   {
-    name: 'Kurta',
-    sku: '432432',
+    name: 'Women\'s T-shirt',
+    sku: '001299a-11a',
     brand: 'Nike',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
@@ -28,23 +28,23 @@ const mockProducts = [
     price: 10.00
   },
   {
-    name: 'Jacket',
-    sku: '432432',
-    brand: 'Nike',
+    name: 'Rainbow shirt',
+    sku: '002199a-11a',
+    brand: 'Forever 21',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',
-    discount: 10,
+    discount: 50,
     img: {
       src: 'https://images.unsplash.com/photo-1603976245482-4d96773aa63a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8ODh8fDMlM0E0JTIwY2xvdGhlc3xlbnwwfDF8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
       alt: 'hoodie'
     },
-    price: 10.00
+    price: 50.00
   },
   {
-    name: 'Dress',
-    sku: '432432',
-    brand: 'Nike',
+    name: 'Hoodie',
+    sku: '006129a-11a',
+    brand: 'Uniqlo',
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',

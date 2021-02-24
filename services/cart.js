@@ -27,9 +27,11 @@ export const setCart = (item) => {
       const parsedCart = JSON.parse(cart)
       // TODO: different colors or size probably should have different sku to account for true amount products in cart
       const matchedPrdIndex = parsedCart.products.findIndex((existingItem) => item.sku === existingItem.sku)
-      if (matchedPrdIndex < -1) {
+      if (matchedPrdIndex === -1) {
+        console.log('🛍🛍🛍 spanking new')
         parsedCart.products.push({...item})
       } else {
+        console.log('👉👉👉 already added')
         parsedCart.products[matchedPrdIndex].qty = item.qty + parsedCart.products[matchedPrdIndex].qty
       }
       localStorage.setItem('mockCart', JSON.stringify(parsedCart))
