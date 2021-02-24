@@ -81,7 +81,7 @@ const btmNavItems = [
   }
 ]
 
-const Nav = () => {
+const Nav = ({ prdInCart = 0 }) => {
   return (
     <nav className={styles.nav}>
       <div className={styles.nav__top}>
@@ -109,7 +109,7 @@ const Nav = () => {
           )
         })}
         <div className={styles.nav__btnContainer}>
-          <Button title='Cart (0)' variant='primary' icon='/bag.svg' />
+          <Button title={`Cart (${prdInCart})`} variant='primary' icon='/bag.svg' />
         </div>
       </div>
 

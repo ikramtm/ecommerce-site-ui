@@ -14,7 +14,7 @@ const Button = ({
     buttonStyle = 'button--secondary'
   }
   return (
-    <button onClick={callback} className={styles[buttonStyle]}>
+    <button onClick={callback} className={`${styles[buttonStyle]} ${styles.button}`}>
       {icon && <img className={styles.button__img} src={icon} alt={title}/>}
       {title}
     </button>

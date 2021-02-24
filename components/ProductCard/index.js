@@ -70,6 +70,7 @@ const getDiscountedPrice = (fullPrice, discount = 0) => {
   return discountedPrice.toFixed(2)
 }
 const ProductCard = ({
+  addProduct,
   name,
   sku,
   price,
@@ -86,6 +87,15 @@ const ProductCard = ({
   const [quantity, setQuantity] = useState(1)
   const [liked, setLike] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+
+  const addToCart = () => {
+    addProduct({
+      sku,
+      color: selectedColor,
+      size: selectedSize,
+      qty: quantity
+    })
+  }
 
   const closeModal = (e) => {
     e.stopPropagation();
@@ -174,9 +184,9 @@ const ProductCard = ({
                   )
               }
               >
-                {colors.map((colors) => {
+                {colors.map((colors, i) => {
                   return (
-                    <div className={styles.modalProduct__imgContainer}>
+                    <div key={i} className={styles.modalProduct__imgContainer}>
                       <img className={styles.modalProduct__img} src={img.src} alt={img.label} />
                     </div>
                   )
@@ -201,7 +211,7 @@ const ProductCard = ({
               <p className={styles.modalProduct__value}>{brand}</p>
             </span>
             <span className={styles['modalProduct__container--price']}>
-              <p className={styles['modalProduct__price--final']}>${price.toFixed(2)}</p>
+              <p className={styles['modalProduct__price--final']}>${getDiscountedPrice(price, discount)}</p>
               <p className={styles['modalProduct__price--initial']}>${price.toFixed(2)}</p>
             </span>
             <span className={styles.modalProduct__container}>
@@ -224,7 +234,7 @@ const ProductCard = ({
               <button className={styles.modalProduct__icon} onClick={() => setLike(!liked)} variant='icon'>
                 <img src={liked ? '/heart-red.svg' : '/heart.svg'} alt='' />
               </button>
-              <Button title='Add to Cart' variant='secondary' />
+              <Button callback={addToCart} title='Add to Cart' variant='secondary' />
               <Button title='Buy Now' variant='primary' />
             </div>
           </div>

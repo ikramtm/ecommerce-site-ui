@@ -20,7 +20,7 @@ const mockProducts = [
     sizes: ['S', 'M', 'L'],
     colors: ['red', 'blue', 'black'],
     rating: '4.7',
-    discount: 0,
+    discount: 10,
     img: {
       src: 'https://images.unsplash.com/photo-1605777973555-888f9265d2c9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE3fHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
       alt: 'hoodie'

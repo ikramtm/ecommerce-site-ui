@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
 import Nav from '../components/Nav/index'
@@ -9,10 +9,31 @@ import TimerCountdown from '../components/Countdown/index'
 
 import styles from '../styles/Home.module.scss'
 import { getInventory, getSalesVouchers } from '../services/stocks'
+import { getCart, setCart } from '../services/cart'
 
-const Home = ({ flashSale, bestSeller, allProducts, vouchers }) => {
+const Home = ({
+  flashSale,
+  bestSeller = [],
+  allProducts = [],
+  vouchers = []
+}) => {
   const featuredProducts = [bestSeller, allProducts]
   const [selectedSales, setSelectedSales] = useState(0)
+  const [prdInCart, setPrdInCart] = useState(0)
+
+  // CONSIDERATION: this should ideally run before page load (getInitialPros), but since I'm just using localStorage, window is not defined on server side
+  // CONSIDERATION: also probably better in redux for remove, edit cart etc
+  useEffect(() => {
+    const { products: addedProducts = []} = getCart()
+    setPrdInCart(addedProducts.length)
+  }, [])
+
+  const addProduct = (item) => {
+    setCart(item)
+    // item indicated in cart account only for differet types of product added instead of qty
+    setPrdInCart(prdInCart + 1)
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +41,7 @@ const Home = ({ flashSale, bestSeller, allProducts, vouchers }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Nav />
+      <Nav prdInCart={prdInCart} />
       <Hero />
       <main className={styles.main}>
         <div className={styles.circle}>
@@ -37,7 +58,7 @@ const Home = ({ flashSale, bestSeller, allProducts, vouchers }) => {
         <div className={styles.gridz}>
           { flashSale.map((product) => {
             return (
-              <ProductCard key={product.name} {...product} />
+              <ProductCard addProduct={addProduct} key={product.name} {...product} />
             )
           })}
         </div>
@@ -69,7 +90,7 @@ const Home = ({ flashSale, bestSeller, allProducts, vouchers }) => {
         <div className={styles.gridz}>
           { featuredProducts[selectedSales].map((product) => {
             return (
-              <ProductCard key={product.name} {...product} />
+              <ProductCard addProduct={addProduct} key={product.name} {...product} />
             )
           })}
         </div>
@@ -83,7 +104,6 @@ Home.getInitialProps = async () => {
   try {
     const { flashSale, bestSeller, allProducts } = await getInventory()
     const { vouchers } = await getSalesVouchers()
-
     return {
       bestSeller,
       allProducts,
