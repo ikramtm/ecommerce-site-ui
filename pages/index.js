@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
+import { ToastContainer, toast } from 'react-toastify'
 
 import Nav from '../components/Nav/index'
 import Hero from '../components/Hero/index'
@@ -8,6 +9,7 @@ import Voucher from '../components/Voucher/index'
 import TimerCountdown from '../components/Countdown/index'
 
 import styles from '../styles/Home.module.scss'
+import 'react-toastify/dist/ReactToastify.css'
 import { getInventory, getSalesVouchers } from '../services/stocks'
 import { getCart, setCart } from '../services/cart'
 
@@ -28,10 +30,23 @@ const Home = ({
     setPrdInCart(addedProducts.length)
   }, [])
 
+  const notify = (title) => {
+    toast.success(`🛍  ${title} has been added to your shopping bag!`, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined
+  }
+  )}
+
   const addProduct = (item) => {
     setCart(item)
     // item indicated in cart account only for differet types of product added instead of qty
     setPrdInCart(prdInCart + 1)
+    notify(item.name)
   }
 
   return (
@@ -42,6 +57,7 @@ const Home = ({
       </Head>
 
       <Nav prdInCart={prdInCart} />
+      <ToastContainer />
       <Hero />
       <main className={styles.main}>
         <div className={styles.circle}>

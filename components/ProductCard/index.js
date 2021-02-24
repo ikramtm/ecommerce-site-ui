@@ -90,6 +90,7 @@ const ProductCard = ({
 
   const addToCart = () => {
     addProduct({
+      name,
       sku,
       color: selectedColor,
       size: selectedSize,
