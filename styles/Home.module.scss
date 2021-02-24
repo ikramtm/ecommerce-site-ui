@@ -156,6 +156,12 @@ $color-greybackground: #f7f8fa;
     background: none;
     border: none;
     width: 2.5rem;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__imgContainer {
     position: relative;
